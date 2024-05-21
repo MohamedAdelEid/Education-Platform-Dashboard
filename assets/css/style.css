@@ -337,11 +337,11 @@ main {
     }
 
     .input-search:focus {
-        width: fit-content !important;
+        width: 222px !important;
     }
 
     .input-search {
-        width: fit-content !important;
+        width: 222px !important;
         /* font-size: 15px !important; */
     }
 }
