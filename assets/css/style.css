@@ -7,6 +7,7 @@
     --primary-color: #FFFFFF;
     --secondary-color: #EBEBEB;
     --active-sidebar: #EEEEEE;
+    --danger-color: rgb(254, 95, 95);
 }
 
 *,
@@ -61,8 +62,9 @@ body {
 
 main {
     background-color: var(--secondary-color);
-    height: calc(100vh - 73px);
+    min-height: calc(100vh - 73px);
     padding: 1.8rem;
+
 }
 
 .main {
@@ -117,7 +119,7 @@ main {
 }
 
 .sidebar-item.logout {
-    color: rgb(254, 95, 95);
+    color: var(--danger-color);
     border: none;
     background-color: transparent;
     width: 100%;
@@ -157,7 +159,6 @@ main {
 }
 
 .submenu {
-    /* overflow: hidden; */
     transition: height 0.3s ease;
     height: 0;
     margin-left: 37px;
@@ -508,6 +509,10 @@ main {
     background-size: 15px;
 }
 
+.label-input{
+    font-size: 16px;
+}
+
 .text-input {
     display: block;
     border: none;
@@ -519,9 +524,9 @@ main {
 
 .text-input::placeholder {
     color: var(--main-color);
-} 
+}
 
-.primary-btn{
+.primary-btn {
     border: none;
     padding: 12px 15px;
     font-size: 17px;
@@ -529,8 +534,214 @@ main {
     background-color: var(--main-color);
     border-radius: 5px;
     transition: .2s;
+    font-weight: 500;
 }
 
-.primary-btn:hover{
+.primary-btn:hover {
     background-color: var(--hover-main-color);
+}
+
+/* end style add subject page  */
+
+
+/* start style show subjects page  */
+
+.btn-add {
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    border: 2px solid black;
+    width: fit-content;
+    border-radius: 5px;
+    transition: .2s;
+}
+
+.btn-add:hover {
+    letter-spacing: 2px;
+    color: white;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.btn-add:active {
+    letter-spacing: 2px;
+    color: white;
+    background-color: var(--main-color);
+}
+
+.subject {
+    min-height: 180px;
+}
+
+.subject .subject-child {
+    height: 100%;
+}
+
+.img-subject {
+    width: 50%;
+    height: 100%;
+}
+
+.desc-subject {
+    width: 50%;
+    position: relative;
+}
+
+.img-subject img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.btn-delete {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.btn-delete button {
+    border: none;
+    background-color: white;
+    padding: 7px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    color: var(--main-color);
+    font-size: 1.2rem;
+    transition: .2s;
+}
+
+.btn-delete button:hover {
+    transform: scale(1.1);
+    color: var(--danger-color);
+}
+
+
+.title-subject {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.sub-title-subject {
+    font-size: 12px;
+    color: rgb(120, 120, 120);
+    margin-bottom: 7px;
+}
+
+.btn-show-subject {
+    position: absolute;
+    bottom: 0px;
+    padding-left: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-show-subject a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid var(--main-color);
+    padding: 5px 0;
+    display: block;
+    border-radius: 3px;
+    color: var(--main-color);
+    transition: .2s;
+}
+
+.btn-show-subject a:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+/* end style show subjects page  */
+
+
+/* start style view subject page  */
+
+.label-text {
+    font-size: 15px;
+    color: #646464;
+    margin-bottom: 0;
+}
+
+.content-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.img-xs-view{
+    width: 100%;
+}
+
+.img-xs-view img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-subject-view {
+    width: 100%;
+    height: 100%;
+}
+
+.img-subject-view img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.price-subject{
+    font-weight: 500;
+    color: var(--main-color);
+}
+
+.num-quiz{
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--transparent-main-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.link-view {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* end style view subject page  */
+
+
+@media (min-width:768px) {
+    .label-text {
+        font-size: 15px;
+    }
+    
+    .content-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:576px) {
+
+    .view-subject{
+        padding: 0 !important;
+    }
+    .label-text {
+        font-size: 13px;
+    }
+
+    .content-text {
+        font-size: 16px;
+    }
+
+    .content-view{
+        padding:25px 48px;
+        margin-top: -52px;
+        background-color: var(--secondary-color);
+        border-radius: 100px;
+    }
 }
