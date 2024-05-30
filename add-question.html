@@ -159,119 +159,147 @@
             <!-- start content  -->
             <main class="add-subject">
 
-                <div class="quiz p-5">
+                <div class="content-question p-5">
 
-                    <p class="fs-3 fw-bold">إضافة إختبار جديد</p>
+                    <p class="fs-3 fw-bold">إضافة اسئلة</p>
 
-                    <div class="content-add-quiz">
+                    <div class="row">
 
-                        <!-- header add quiz -->
-                        <div>
-                            <p class="title-add-quiz">إضافة إختبار</p>
-                        </div>
+                        <div class="col-12 col-sm-7 col-lg-8 col-xl-9">
+                            <div class="content-add-question">
+                                <p class="fs-4">الاسئلة</p>
 
-                        <!-- main add quiz -->
-                        <div class="main-add-quiz">
-                            <p class="title">تعليمات الإختبار</p>
+                                <form action="">
 
-                            <form action="">
-                                <div class="row">
+                                    <div class="row">
 
-                                    <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
+                                        <div class="col-xl-6">
 
-                                        <!-- اسم الاختبار -->
-                                        <div class="mb-3">
-                                            <label for="name-quiz" class="label-input mb-2">اسم الإختبار</label>
-                                            <input type="text" name="" id="name-quiz" class="text-input w-100">
-                                            </input>
-                                        </div>
-
-                                        <!-- حالة الاختبار -->
-                                        <div class="mb-3">
-                                            <label for="subject" class="label-input mb-2">
-                                                المادة</label>
-                                            <select name="" id="subject" class="text-input w-100">
-                                                <option value="">عربي</option>
-                                                <option value="">انجليزي</option>
-                                                <option value="">فرنساوي</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <p for="name-quiz" class="label-input mb-2">مدة الإختبار
-                                            </p>
-
-                                            <div class="col-6">
-                                                <!-- موعد الاختبار -->
-                                                <div class="mb-3">
-                                                    <input type="number" placeholder="ساعة" name=""
-                                                        class="text-input w-100">
+                                            <div class="mb-4">
+                                                <label for="name-quiz" class="label-input mb-2 d-block">محتوي
+                                                    السؤال</label>
+                                                <div class="d-flex align-items-center">
+                                                    <p class="m-0 fs-3 ms-2">1.</p>
+                                                    <input type="text" name="" id="name-quiz" class="text-input w-100">
                                                     </input>
                                                 </div>
-
                                             </div>
-                                            <div class="col-6">
-                                                <!-- موعد الاختبار -->
+
+                                            <div>
                                                 <div class="mb-3">
-                                                    <input type="number" name="" placeholder="دقيقة"
-                                                        class="text-input w-100">
-                                                    </input>
-                                                </div>
+                                                    <label for="name-quiz" class="label-input mb-2 d-block">إضافة
+                                                        الاختيارات</label>
 
+                                                    <div class="d-flex align-items-center mb-3">
+
+                                                        <!-- radio button 1 -->
+                                                        <input name="correct-answer" id="radio1"
+                                                            class="radio-button__input" type="radio">
+                                                        <label for="radio1" class="radio-button__label">
+                                                            <span class="radio-button__custom"></span>
+                                                        </label>
+
+                                                        <input type="text" name="" id=""
+                                                            class="text-input w-100 me-2 option one">
+                                                        </input>
+
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center mb-3">
+
+                                                        <!-- radio button 2 -->
+                                                        <input name="correct-answer" id="radio2"
+                                                            class="radio-button__input" type="radio">
+                                                        <label for="radio2" class="radio-button__label">
+                                                            <span class="radio-button__custom"></span>
+                                                        </label>
+
+                                                        <input type="text" name="" id=""
+                                                            class="text-input w-100 me-2 option two">
+                                                        </input>
+
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center mb-3">
+
+                                                        <!-- radio button 3 -->
+                                                        <input name="correct-answer" id="radio3"
+                                                            class="radio-button__input" type="radio">
+                                                        <label for="radio3" class="radio-button__label">
+                                                            <span class="radio-button__custom"></span>
+                                                        </label>
+
+                                                        <input type="text" name="" id=""
+                                                            class="text-input w-100 me-2 option three">
+                                                        </input>
+
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center mb-3">
+
+                                                        <!-- radio button 2 -->
+                                                        <input name="correct-answer" id="radio4"
+                                                            class="radio-button__input" type="radio">
+                                                        <label for="radio4" class="radio-button__label">
+                                                            <span class="radio-button__custom"></span>
+                                                        </label>
+
+                                                        <input type="text" name="" id=""
+                                                            class="text-input w-100 me-2 option four">
+                                                        </input>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <button type="submit"
+                                                    class="primary-btn d-flex align-items-center">إضافة سؤال <i
+                                                        class="fa-solid fa-plus me-2"></i></button>
                                             </div>
 
                                         </div>
 
                                     </div>
 
-                                    <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
+                                </form>
 
-                                        <!-- موعد الاختبار -->
-                                        <div class="mb-3">
-                                            <label for="time-quiz" class="label-input mb-2">موعد
-                                                الإختبار</label>
-                                            <input type="date" name="" class="text-input w-100">
-                                            </input>
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label for="status" class="label-input mb-2">حالة
-                                                الإختبار</label>
-                                            <select name="" id="status" class="text-input w-100">
-                                                <option value="">مكتمل</option>
-                                                <option value="">غير مكتمل</option>
-                                                <option value="">نشط</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="">
-                                        <button class="col-12 col-sm-5 col-lg-4 col-xl-2 primary-btn">إضافة</button>
-                                    </div>
-
-                                </div>
-                            </form>
-
-                        </div>
-
-                        <!-- footer add quiz -->
-                        <div class="footer-add-quiz d-flex align-items-center justify-content-between">
-
-                            <div class="d-flex align-items-center">
-                                <p class="name-quiz">ميد تيرم عربي</p>
-
-                                <p class="status-quiz active">نشط</p>
                             </div>
-
-                            <form action="add-question.html" class="">
-                                <button type="submit" class="add-question d-flex align-items-center">
-                                    إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
-                                </button>
-                            </form>
-
                         </div>
+
+                        <div class="col-12 col-sm-5 col-lg-4 col-xl-3">
+                            <div class="content-show-question">
+                                <p class="fs-5">تعديل | حذف الاسئلة</p>
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p class="question mb-0"><span class="fw-bold">1.</span> من هو البشمهندس محمد عادل وكيف البنات
+                                                تعشقة ؟</p>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center me-1">
+
+                                                <!-- delete row -->
+                                                <form action="" class="fit-content"><button
+                                                        class="delete-btn d-flex justify-content-center align-items-center"><i
+                                                            class="fa-solid fa-trash fs-6"></i></button>
+                                                </form>
+
+                                                <!-- edit row -->
+                                                <form action="" class="fit-content me-1"><button
+                                                        class="edit-btn d-flex justify-content-center align-items-center"><i
+                                                            class="fa-solid fa-pen-to-square fs-6"></i></button>
+                                                </form>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
