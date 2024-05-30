@@ -841,7 +841,7 @@ main {
     background-color: var(--secondary-color);
     border-bottom: 1px solid rgb(193, 193, 193);
     position: sticky;
-    top: 0  ;
+    top: 0;
 }
 
 .table-show-quizs .header-table th,
@@ -913,7 +913,8 @@ main {
         margin-bottom: 10px;
     }
 
-    .quiz {
+    .quiz,
+    .parent-show-quizs {
         padding: 2rem !important;
     }
 }
