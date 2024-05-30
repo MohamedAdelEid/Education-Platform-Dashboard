@@ -159,144 +159,119 @@
             <!-- start content  -->
             <main class="add-subject">
 
-                <!--  -->
-                <div>
-                    <p class="title-add-subject d-flex align-items-center"> موادي <i
-                            class="fa-regular fa-square-check me-2"></i></p>
-                </div>
+                <div class="quiz p-5">
 
-                <div class="px-5 py-4">
+                    <p class="fs-3 fw-bold">إضافة إختبار جديد</p>
 
-                    <!-- btn add subject -->
-                    <div><a href="add-subject.html" class="btn-add d-flex align-items-center">إضافة مادة <i
-                                class="fa-solid fa-plus me-2 mt-1"></i></a></div>
+                    <div class="content-add-quiz">
 
-                    <div class="row my-4">
-
-                        <div class="subject col-12 col-sm-6 col-lg-4 col-xl-4 mb-4">
-                            <div class="subject-child d-flex">
-                                <div class="desc-subject">
-
-                                    <!-- name subject -->
-                                    <p class="title-subject">اللغة الانجليزية</p>
-
-                                    <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
-
-                                    <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
-
-                                    <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
-
-                                    <div class="btn-show-subject"><a href="view-subject.html">عرض المادة</a></div>
-
-                                </div>
-                                <div class="img-subject position-relative">
-
-                                    <form action="" class="btn-delete">
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-
-                                    <img src="assets/imgs/subject/math - .jpg" alt="">
-
-                                </div>
-                            </div>
+                        <!-- header add quiz -->
+                        <div>
+                            <p class="title-add-quiz">إضافة إختبار</p>
                         </div>
 
-                        <div class="subject col-12 col-sm-6 col-lg-4 col-xl-4 mb-4">
-                            <div class="subject-child d-flex">
-                                <div class="desc-subject">
+                        <!-- main add quiz -->
+                        <div class="main-add-quiz">
+                            <p class="title">تعليمات الإختبار</p>
 
-                                    <!-- name subject -->
-                                    <p class="title-subject">اللغة الانجليزية</p>
+                            <form action="">
+                                <div class="row">
 
-                                    <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
+                                    <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
 
-                                    <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
+                                        <!-- اسم الاختبار -->
+                                        <div class="mb-3">
+                                            <label for="name-quiz" class="label-input mb-2">اسم الإختبار</label>
+                                            <input type="text" name="" id="name-quiz" class="text-input w-100">
+                                            </input>
+                                        </div>
 
-                                    <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
+                                        <!-- حالة الاختبار -->
+                                        <div class="mb-3">
+                                            <label for="subject" class="label-input mb-2">
+                                                المادة</label>
+                                            <select name="" id="subject" class="text-input w-100">
+                                                <option value="">عربي</option>
+                                                <option value="">انجليزي</option>
+                                                <option value="">فرنساوي</option>
+                                            </select>
+                                        </div>
 
-                                    <div class="btn-show-subject"><a href="">عرض المادة</a></div>
+                                        <div class="row mb-3">
+                                            <p for="name-quiz" class="label-input mb-2">مدة الإختبار
+                                            </p>
+
+                                            <div class="col-6">
+                                                <!-- موعد الاختبار -->
+                                                <div class="mb-3">
+                                                    <input type="number" placeholder="ساعة" name=""
+                                                        class="text-input w-100">
+                                                    </input>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6">
+                                                <!-- موعد الاختبار -->
+                                                <div class="mb-3">
+                                                    <input type="number" name="" placeholder="دقيقة"
+                                                        class="text-input w-100">
+                                                    </input>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
+
+                                        <!-- موعد الاختبار -->
+                                        <div class="mb-3">
+                                            <label for="time-quiz" class="label-input mb-2">موعد
+                                                الإختبار</label>
+                                            <input type="date" name="" class="text-input w-100">
+                                            </input>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="status" class="label-input mb-2">حالة
+                                                الإختبار</label>
+                                            <select name="" id="status" class="text-input w-100">
+                                                <option value="">مكتمل</option>
+                                                <option value="">غير مكتمل</option>
+                                                <option value="">نشط</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="">
+                                        <button class="col-12 col-sm-5 col-lg-4 col-xl-2 primary-btn">إضافة</button>
+                                    </div>
 
                                 </div>
-                                <div class="img-subject position-relative">
+                            </form>
 
-                                    <form action="" class="btn-delete">
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-
-                                    <img src="assets/imgs/subject/math - .jpg" alt="">
-
-                                </div>
-                            </div>
                         </div>
 
-                        <div class="subject col-12 col-sm-6 col-lg-4 col-xl-4 mb-4">
-                            <div class="subject-child d-flex">
-                                <div class="desc-subject">
+                        <!-- footer add quiz -->
+                        <div class="footer-add-quiz d-flex align-items-center justify-content-between">
 
-                                    <!-- name subject -->
-                                    <p class="title-subject">اللغة الانجليزية</p>
+                            <div class="d-flex align-items-center">
+                                <p class="name-quiz">ميد تيرم عربي</p>
 
-                                    <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
-
-                                    <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
-
-                                    <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
-
-                                    <div class="btn-show-subject"><a href="">عرض المادة</a></div>
-
-                                </div>
-                                <div class="img-subject position-relative">
-
-                                    <form action="" class="btn-delete">
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-
-                                    <img src="assets/imgs/subject/math - .jpg" alt="">
-
-                                </div>
+                                <p class="status-quiz active">نشط</p>
                             </div>
+
+                            <form action="" class="">
+                                <button type="submit" class="add-question d-flex align-items-center">
+                                    إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
+                                </button>
+                            </form>
+
                         </div>
-
-                        <div class="subject col-12 col-sm-6 col-lg-4 col-xl-4 mb-4">
-                            <div class="subject-child d-flex">
-                                <div class="desc-subject">
-
-                                    <!-- name subject -->
-                                    <p class="title-subject">اللغة الانجليزية</p>
-
-                                    <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
-
-                                    <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
-
-                                    <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
-
-                                    <div class="btn-show-subject"><a href="">عرض المادة</a></div>
-
-                                </div>
-                                <div class="img-subject position-relative">
-
-                                    <form action="" class="btn-delete">
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-
-                                    <img src="assets/imgs/subject/math - .jpg" alt="">
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>

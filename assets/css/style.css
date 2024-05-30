@@ -493,9 +493,12 @@ main {
     border-radius: 7px;
 }
 
+.select-input::placeholder {
+    color: var(--main-color);
+}
+
 .select-input:focus,
 .text-input:focus {
-    border: none;
     outline: none;
 }
 
@@ -503,13 +506,13 @@ main {
     background-image: url('../imgs/arrow\ main-color.svg');
     position: absolute;
     left: 10px;
-    top: 44px;
+    top: 47px;
     width: 17px;
     height: 17px;
     background-size: 15px;
 }
 
-.label-input{
+.label-input {
     font-size: 16px;
 }
 
@@ -517,13 +520,18 @@ main {
     display: block;
     border: none;
     width: 100%;
-    padding: 12px 15px;
-    color: var(--main-color);
-    background-color: #0960f50a;
+    padding: 8px 15px;
+    color: black;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1.5px solid rgb(172, 172, 172);
+    transition: .2s;
 }
 
-.text-input::placeholder {
-    color: var(--main-color);
+.text-input:focus {
+    border-color: var(--main-color);
+    background-color: var(--transparent-main-color);
 }
 
 .primary-btn {
@@ -674,11 +682,11 @@ main {
     font-weight: 500;
 }
 
-.img-xs-view{
+.img-xs-view {
     width: 100%;
 }
 
-.img-xs-view img{
+.img-xs-view img {
     width: 100%;
     object-fit: cover;
 }
@@ -694,12 +702,12 @@ main {
     object-fit: cover;
 }
 
-.price-subject{
+.price-subject {
     font-weight: 500;
     color: var(--main-color);
 }
 
-.num-quiz{
+.num-quiz {
     font-size: 16px;
     font-weight: 500;
     background-color: var(--transparent-main-color);
@@ -714,12 +722,104 @@ main {
 
 /* end style view subject page  */
 
+/* start style add quiz  */
+
+.content-add-quiz {
+    border: 2px solid rgb(172, 172, 172);
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.title-add-quiz {
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--main-color);
+    border-bottom: 1px solid rgb(193, 193, 193);
+    background-color: var(--secondary-color);
+    margin: 0;
+}
+
+.main-add-quiz {
+    padding: 16px 15px;
+    border-bottom: 1px solid rgb(193, 193, 193);
+}
+
+.main-add-quiz .title {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.footer-add-quiz {
+    padding: 8px 15px;
+}
+
+.footer-add-quiz .name-quiz {
+    font-size: 20px;
+    margin: 0;
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+.status-quiz {
+    margin-bottom: 0;
+    margin-right: 30px;
+    background-color: #0085DB;
+    border-radius: 15px;
+    padding: 5px 15px;
+    font-weight: 500;
+}
+
+.status-quiz.active {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.167);
+}
+
+.add-question {
+    border: 0;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.add-question div {
+    width: 24px;
+    height: 24px;
+    background: rgb(0, 214, 0);
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    transition: .2s;
+}
+
+.add-question div i {
+    color: white;
+    font-size: 15px;
+}
+
+.add-question:hover {
+    color: var(--main-color);
+    letter-spacing: 2px;
+}
+
+.add-question:hover div {
+    background-color: var(--main-color);
+    letter-spacing: 0px;
+}
+
+/* end style add quiz  */
+
 
 @media (min-width:768px) {
     .label-text {
         font-size: 15px;
     }
-    
+
     .content-text {
         font-size: 20px;
     }
@@ -727,9 +827,10 @@ main {
 
 @media (max-width:576px) {
 
-    .view-subject{
+    .view-subject {
         padding: 0 !important;
     }
+
     .label-text {
         font-size: 13px;
     }
@@ -738,10 +839,19 @@ main {
         font-size: 16px;
     }
 
-    .content-view{
-        padding:25px 48px;
+    .content-view {
+        padding: 25px 48px;
         margin-top: -52px;
         background-color: var(--secondary-color);
         border-radius: 100px;
+    }
+
+    .footer-add-quiz {
+        display: block !important;
+        margin-bottom: 10px;
+    }
+
+    .quiz {
+        padding: 2rem !important;
     }
 }
