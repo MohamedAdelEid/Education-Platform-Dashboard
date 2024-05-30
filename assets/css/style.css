@@ -814,6 +814,68 @@ main {
 
 /* end style add quiz  */
 
+/* start style show quizs  */
+
+.table-show-quizs {
+    border: 2px solid rgb(172, 172, 172);
+    border-radius: 8px;
+    overflow: auto;
+    background-color: white;
+    max-height: 1000px;
+}
+
+.table-show-quizs::-webkit-scrollbar {
+    width: .2rem;
+    height: .2rem;
+}
+
+.table-show-quizs::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.table-show-quizs::-webkit-scrollbar-thumb {
+    background-color: #0960f55e;
+}
+
+.table-show-quizs .header-table {
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid rgb(193, 193, 193);
+    position: sticky;
+    top: 0  ;
+}
+
+.table-show-quizs .header-table th,
+.table-show-quizs .body-table td {
+    padding: 15px 16px;
+}
+
+.delete-btn,
+.edit-btn {
+    border: 0;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.delete-btn i,
+.edit-btn i {
+    color: var(--danger-color);
+    transition: .2s;
+}
+
+.delete-btn i:hover {
+    color: red;
+}
+
+.edit-btn i {
+    color: rgb(80, 251, 80);
+}
+
+.edit-btn i:hover {
+    color: rgb(0, 221, 0);
+}
+
+/* end style show quizs  */
+
 
 @media (min-width:768px) {
     .label-text {
