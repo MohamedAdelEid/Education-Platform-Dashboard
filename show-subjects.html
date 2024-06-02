@@ -21,6 +21,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- include link Alerts "iziToast" -->
+    <link rel="stylesheet" href="assets/css/iziToast.min.css">
+    <link rel="stylesheet" href="assets/css/btn.css">
 </head>
 
 <body>
@@ -181,13 +185,16 @@
                                     <p class="title-subject">اللغة الانجليزية</p>
 
                                     <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف
+                                        السادس الابتادئي</p>
 
                                     <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 |
+                                        2002</p>
 
                                     <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span
+                                            class="fw-bold ">50</span></p>
 
                                     <div class="btn-show-subject"><a href="view-subject.html">عرض المادة</a></div>
 
@@ -212,13 +219,16 @@
                                     <p class="title-subject">اللغة الانجليزية</p>
 
                                     <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف
+                                        السادس الابتادئي</p>
 
                                     <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 |
+                                        2002</p>
 
                                     <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span
+                                            class="fw-bold ">50</span></p>
 
                                     <div class="btn-show-subject"><a href="">عرض المادة</a></div>
 
@@ -243,13 +253,16 @@
                                     <p class="title-subject">اللغة الانجليزية</p>
 
                                     <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف
+                                        السادس الابتادئي</p>
 
                                     <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 |
+                                        2002</p>
 
                                     <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span
+                                            class="fw-bold ">50</span></p>
 
                                     <div class="btn-show-subject"><a href="">عرض المادة</a></div>
 
@@ -274,13 +287,16 @@
                                     <p class="title-subject">اللغة الانجليزية</p>
 
                                     <!-- level subject  -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف السادس الابتادئي</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-chart-simple ms-1"></i>الصف
+                                        السادس الابتادئي</p>
 
                                     <!-- date creation subject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 | 2002</p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-calendar-days ms-1"></i>12 | 12 |
+                                        2002</p>
 
                                     <!-- num of student in suject -->
-                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span class="fw-bold ">50</span></p>
+                                    <p class="sub-title-subject"><i class="fa-solid fa-users ms-1"></i><span
+                                            class="fw-bold ">50</span></p>
 
                                     <div class="btn-show-subject"><a href="">عرض المادة</a></div>
 
@@ -308,6 +324,21 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/iziToast.min.js"></script>
+
+    <script>
+
+        if (localStorage.successCreateSubject) {
+            iziToast.success({
+                title: ' تم إضافة المادة بنجاح',
+                position: 'topRight'
+            });
+            // Clear the success message from local storage
+            localStorage.removeItem('successCreateSubject');
+        }
+    </script>
+
+    </script>
 </body>
 
 </html>
