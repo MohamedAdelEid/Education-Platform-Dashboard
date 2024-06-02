@@ -21,6 +21,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- include link Alerts "iziToast" -->
+    <link rel="stylesheet" href="assets/css/iziToast.min.css">
+    <link rel="stylesheet" href="assets/css/btn.css">
 </head>
 
 <body>
@@ -31,7 +35,7 @@
             <div class="h-100">
                 <div class="sidebar-logo d-flex justify-content-between align-items-center">
                     <a href="#" class="text-dark"><img class="img-logo" src="assets/imgs/logo 1.png" alt=""></a>
-                    <i class="fa-solid fa-xmark text-dark fs-4 btn sidebar-toggle"></i>
+                    <i class="fa-solid fa-xmark text-dark fs-4 px-3 cursor-pointer sidebar-toggle"></i>
                 </div>
 
                 <!-- search -->
@@ -174,7 +178,7 @@
                         <div class="main-add-quiz">
                             <p class="title">تعليمات الإختبار</p>
 
-                            <form action="">
+                            <form action="" class="createQuiz">
                                 <div class="row">
 
                                     <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
@@ -182,27 +186,17 @@
                                         <!-- اسم الاختبار -->
                                         <div class="mb-3">
                                             <label for="name-quiz" class="label-input mb-2">اسم الإختبار</label>
-                                            <input type="text" name="" id="name-quiz" class="text-input w-100">
+                                            <input type="text" name="description" id="name-quiz"
+                                                class="text-input w-100">
                                             </input>
                                         </div>
 
-                                        <!-- حالة الاختبار -->
-                                        <div class="mb-3">
-                                            <label for="subject" class="label-input mb-2">
-                                                المادة</label>
-                                            <select name="" id="subject" class="text-input w-100">
-                                                <option value="">عربي</option>
-                                                <option value="">انجليزي</option>
-                                                <option value="">فرنساوي</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="row mb-3">
+                                        <!-- مدة الإختبار -->
+                                        <!-- <div class="row mb-3">
                                             <p for="name-quiz" class="label-input mb-2">مدة الإختبار
                                             </p>
 
                                             <div class="col-6">
-                                                <!-- موعد الاختبار -->
                                                 <div class="mb-3">
                                                     <input type="number" placeholder="ساعة" name=""
                                                         class="text-input w-100">
@@ -211,7 +205,6 @@
 
                                             </div>
                                             <div class="col-6">
-                                                <!-- موعد الاختبار -->
                                                 <div class="mb-3">
                                                     <input type="number" name="" placeholder="دقيقة"
                                                         class="text-input w-100">
@@ -220,22 +213,31 @@
 
                                             </div>
 
-                                        </div>
+                                        </div> -->
 
                                     </div>
 
                                     <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
 
-                                        <!-- موعد الاختبار -->
+                                        <!-- المادة-->
                                         <div class="mb-3">
+                                            <label for="subject" class="label-input mb-2">
+                                                المادة</label>
+                                            <select name="subjectId" id="select-subjects" class="text-input w-100">
+
+                                            </select>
+                                        </div>
+
+                                        <!-- موعد الاختبار -->
+                                        <!-- <div class="mb-3">
                                             <label for="time-quiz" class="label-input mb-2">موعد
                                                 الإختبار</label>
                                             <input type="date" name="" class="text-input w-100">
                                             </input>
-                                        </div>
+                                        </div> -->
 
-
-                                        <div class="mb-3">
+                                        <!-- حاله الاختبار -->
+                                        <!-- <div class="mb-3">
                                             <label for="status" class="label-input mb-2">حالة
                                                 الإختبار</label>
                                             <select name="" id="status" class="text-input w-100">
@@ -243,12 +245,13 @@
                                                 <option value="">غير مكتمل</option>
                                                 <option value="">نشط</option>
                                             </select>
-                                        </div>
+                                        </div> -->
 
                                     </div>
 
                                     <div class="">
-                                        <button class="col-12 col-sm-5 col-lg-4 col-xl-2 primary-btn">إضافة</button>
+                                        <button type="submit"
+                                            class="col-12 col-sm-5 col-lg-4 col-xl-2 primary-btn">إضافة</button>
                                     </div>
 
                                 </div>
@@ -283,6 +286,112 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/iziToast.min.js"></script>
+
+    <!-- api requset -->
+    <script>
+
+        // Request Get Subject 
+        let requestGetSubjects = new XMLHttpRequest();
+        requestGetSubjects.open("GET", "http://edu1.runasp.net/api/subject");
+        requestGetSubjects.responseType = "json";
+        requestGetSubjects.send();
+        requestGetSubjects.onload = function () {
+
+            // if request is success ☻
+            if (requestGetSubjects.status >= 200 && requestGetSubjects.status <= 300) {
+                let subjects = requestGetSubjects.response;
+                for (subject of subjects) {
+                    document.getElementById("select-subjects").innerHTML += `<option value="${subject.subjectId}"> ${subject.subjName} </option>`
+                }
+            }
+            // if request is wrong 
+            else {
+                iziToast.error({
+                    title: 'System Error',
+                    zindex: 999,
+                    overlay: true,
+                    progressBar: false,
+                    timeout: false,
+                    position: 'topCenter',
+                    message: 'you have try refresh page or Get back to us in a few minutes ',
+                    buttons: [
+                        ['<button>Refresh</button>', function (instance, toast) {
+                            instance.hide({
+                                transitionOut: 'fadeOutUp',
+                                onClosing: function (instance, toast, closedBy) {
+                                    console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                                    window.location.reload(); // Reload the page
+                                }
+                            }, toast, 'buttonName');
+                        }]
+                    ],
+                });
+            }
+
+        }
+
+
+        // Request Post Quiz "create new quiz"
+        const formCreateQuiz = document.querySelector('.createQuiz');
+
+        formCreateQuiz.addEventListener('submit', event => {
+            event.preventDefault();
+
+            // Collect the form data
+            const objectQuizData = new FormData(formCreateQuiz);
+
+            // Convert the FormData object to a plain JavaScript object
+            const quizData = Object.fromEntries(objectQuizData);
+
+            // Convert the JavaScript object to a JSON string
+            const quizDataJson = JSON.stringify(quizData);
+
+            // Log the JSON stringified data
+            console.log(quizDataJson);
+
+            // Send the JSON data to the server using fetch
+            fetch('http://edu1.runasp.net/api/quiz', {
+                method: 'POST',
+                body: quizDataJson,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    // Check if the response status is ok (200-299)
+                    if (response.ok) {
+                        // Show success message using iziToast
+                        iziToast.success({
+                            title: ' تم إضافة الاختبار بنجاح',
+                            position: 'topRight'
+                        });
+                    } else {
+                        // Show warning message using iziToast
+                        iziToast.warning({
+                            title: 'حاول مرة اخري !',
+                            position: 'topRight'
+                        });
+                    }
+                    // Convert the response to JSON
+                    return response.json();
+                })
+                .then(data => console.log(data)) // Log the response data
+                .catch(error => {
+                    // Handle any errors
+                    console.error('Error:', error);
+                    // Show error message using iziToast
+                    iziToast.error({
+                        title: 'الشبكة غير مستقره ',
+                        position: 'topRight'
+                    });
+                });
+        });
+
+
+
+
+    </script>
 </body>
 
 </html>
