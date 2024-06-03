@@ -1,3 +1,66 @@
+function validateForm_1() {
+    var quizName = document.getElementById("name-quiz").value.trim();
+    var errorMessage = document.getElementById("errorMessage");
+    var invalidChars = ["*", "#", "$","@","!","%","^","&","~"]; // Add more characters as needed
+
+     if (quizName === "") {
+     errorMessage.innerText =  "من فضلك هذا الحقل مطلوب .";
+     return false;
+     } else {
+        for (var i = 0; i < invalidChars.length; i++) {
+    if (quizName.includes(invalidChars[i])) {
+   errorMessage.innerText = "من فضلك اسم الإختبار لا يمكن أن يحتوى على هذه الرموز[*, #, $,@,!,%,^,&,~]";
+    return false;
+      }
+               }
+           errorMessage.innerText = "";
+           return true;
+        }
+        }
+
+//
+
+        function validateForm_2() {
+            var subject = document.getElementById("desc-subject").value.trim();
+            var errorMessage = document.getElementById("errorMessage_2");
+            var invalidChars = ["*", "#", "$","@","!","%","^","&","~"]; // Add more characters as needed
+            var arabicRegex = /^[\u0600-\u06FF\s]+$/; // Regular expression for Arabic characters
+        
+             if (subject === "") {
+             errorMessage.innerText = "من فضلك هذا الحقل مطلوب .";
+             return false;
+             } else {
+                for (var i = 0; i < invalidChars.length; i++) {
+            if (subject.includes(invalidChars[i])) {
+           errorMessage.innerText = "من فضلك وصف المادة لا يمكن أن يحتوى على هذه الرموز[*, #, $,@,!,%,^,&,~]";
+            return false;
+              }
+              else if (!arabicRegex.test(subject)) {
+                errorMessage.innerText = "من فضلك وصف المادة لا يمكن أن يحتوي على حروف إنجليزية";
+                return false;
+            }
+                       }
+                   errorMessage.innerText = "";
+                   return true;
+                }
+                }
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Get the current URL path
     const currentPath = window.location.pathname;
