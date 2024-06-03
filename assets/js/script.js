@@ -40,26 +40,13 @@ function validateForm_2() {
                 return false;
             }
         }
-        errorMessage.innerText = "";
-        return true;
     }
+    errorMessage.innerText = "";
+    return true;
 }
 
 
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
+// ================================================================================
 
 document.addEventListener("DOMContentLoaded", function () {
     // Get the current URL path

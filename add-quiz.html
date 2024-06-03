@@ -399,9 +399,6 @@
                 // Convert the JavaScript object to a JSON string
                 const quizDataJson = JSON.stringify(quizData);
 
-                // Log the JSON stringified data
-                console.log(quizDataJson);
-
                 // Send the JSON data to the server using fetch
                 fetch('http://edu1.runasp.net/api/quiz', {
                     method: 'POST',
