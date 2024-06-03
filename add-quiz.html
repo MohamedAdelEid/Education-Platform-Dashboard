@@ -182,19 +182,19 @@
                                 <div class="row">
 
                                     <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
-                                    
+
                                         <!-- اسم الاختبار -->
                                         <div class="mb-3">
                                             <label for="name-quiz" class="label-input mb-2">اسم الإختبار</label>
-                                            <input type="text" maxlength="15"    name="description" id="name-quiz"
+                                            <input type="text" maxlength="15" name="description" id="name-quiz"
                                                 class="text-input w-100">
-                                                <span class="error-message" id="errorMessage"></span>
-                                                <style>
-                                                    .error-message {
-                                                        color: red;
-                                                    }
-                                                </style>
-                                                
+                                            <span class="error-message" id="errorMessage"></span>
+                                            <style>
+                                                .error-message {
+                                                    color: red;
+                                                }
+                                            </style>
+
                                             </input>
 
                                         </div>
@@ -268,19 +268,7 @@
                         </div>
 
                         <!-- footer add quiz -->
-                        <div class="footer-add-quiz d-flex align-items-center justify-content-between">
-
-                            <div class="d-flex align-items-center">
-                                <p class="name-quiz">ميد تيرم عربي</p>
-
-                                <p class="status-quiz active">نشط</p>
-                            </div>
-
-                            <form action="add-question.html" class="">
-                                <button type="submit" class="add-question d-flex align-items-center">
-                                    إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
-                                </button>
-                            </form>
+                        <div class="lastQuizs">
 
                         </div>
                     </div>
@@ -340,63 +328,137 @@
         }
 
 
+        // Function to display the last three quizzes
+        function displayLastThreeQuizzes() {
+            let requestGetQuizs = new XMLHttpRequest();
+            requestGetQuizs.open("GET", "http://edu1.runasp.net/api/quiz");
+            requestGetQuizs.responseType = "json";
+            requestGetQuizs.send();
+            requestGetQuizs.onload = function () {
+                // if request is success ☻
+                if (requestGetQuizs.status >= 200 && requestGetQuizs.status <= 300) {
+                    let quizs = requestGetQuizs.response;
+
+                    // Get the last 3 quizzes
+                    let lastThreeQuizes = quizs.slice(-3);
+                    let lastQuizsHtml = document.querySelector(".lastQuizs");
+                    lastQuizsHtml.innerHTML = ''; // Clear the existing content
+
+                    for (let quiz of lastThreeQuizes) {
+                        lastQuizsHtml.innerHTML += `<div class="footer-add-quiz border-bottom  d-flex align-items-center justify-content-between">
+                                                        <div class="d-flex align-items-center">
+                                                            <p class="name-quiz">${quiz.description}</p> <!-- Assuming quiz has a 'description' property -->
+                                                        </div>
+                                                        <form action="add-question.html" method="get" class="">
+                                                            <input type="hidden" name="q" value="${quiz.id}">
+                                                            <button type="submit" class="add-question d-flex align-items-center">
+                                                            إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
+                                                            </button>
+                                                        </form>
+                                                    </div>`;
+                    }
+                }
+                // if request is wrong 
+                else {
+                    iziToast.error({
+                        title: 'خطأ في النظام !',
+                        zindex: 999,
+                        overlay: true,
+                        progressBar: false,
+                        timeout: false,
+                        position: 'topCenter',
+                        buttons: [
+                            ['<button>Refresh</button>', function (instance, toast) {
+                                instance.hide({
+                                    transitionOut: 'fadeOutUp',
+                                    onClosing: function (instance, toast, closedBy) {
+                                        console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                                        window.location.reload(); // Reload the page
+                                    }
+                                }, toast, 'buttonName');
+                            }]
+                        ],
+                    });
+                }
+            }
+        }
+
         // Request Post Quiz "create new quiz"
         const formCreateQuiz = document.querySelector('.createQuiz');
 
         formCreateQuiz.addEventListener('submit', event => {
-            event.preventDefault();
+            if (validateForm_1()) {
+                event.preventDefault();
 
-            // Collect the form data
-            const objectQuizData = new FormData(formCreateQuiz);
+                // Collect the form data
+                const objectQuizData = new FormData(formCreateQuiz);
 
-            // Convert the FormData object to a plain JavaScript object
-            const quizData = Object.fromEntries(objectQuizData);
+                // Convert the FormData object to a plain JavaScript object
+                const quizData = Object.fromEntries(objectQuizData);
 
-            // Convert the JavaScript object to a JSON string
-            const quizDataJson = JSON.stringify(quizData);
+                // Convert the JavaScript object to a JSON string
+                const quizDataJson = JSON.stringify(quizData);
 
-            // Log the JSON stringified data
-            console.log(quizDataJson);
+                // Log the JSON stringified data
+                console.log(quizDataJson);
 
-            // Send the JSON data to the server using fetch
-            fetch('http://edu1.runasp.net/api/quiz', {
-                method: 'POST',
-                body: quizDataJson,
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-                .then(response => {
-                    // Check if the response status is ok (200-299)
-                    if (response.ok) {
+                // Send the JSON data to the server using fetch
+                fetch('http://edu1.runasp.net/api/quiz', {
+                    method: 'POST',
+                    body: quizDataJson,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(response => {
+                        // Check if the response status is ok (200-299)
+                        if (response.ok) {
+                            return response.json(); // Convert the response to JSON
+                        } else {
+                            // Show warning message using iziToast
+                            iziToast.warning({
+                                title: 'حاول مرة اخري !',
+                                position: 'topRight'
+                            });
+                            throw new Error('Failed to create quiz');
+                        }
+                    })
+                    .then(data => {
+                        console.log(data); // Log the response data
                         // Show success message using iziToast
                         iziToast.success({
-                            title: ' تم إضافة الاختبار بنجاح',
+                            title: 'تم إضافة الاختبار بنجاح',
                             position: 'topRight'
                         });
-                    } else {
-                        // Show warning message using iziToast
-                        iziToast.warning({
-                            title: 'حاول مرة اخري !',
+
+                        // Add the new quiz to the DOM
+                        let lastQuizsHtml = document.querySelector(".lastQuizs");
+                        lastQuizsHtml.innerHTML = `<div class="footer-add-quiz border-bottom  d-flex align-items-center justify-content-between">
+                                                        <div class="d-flex align-items-center">
+                                                            <p class="name-quiz">${data.description}</p> <!-- Assuming data has a 'description' property -->
+                                                        </div>
+                                                        <form action="add-question.html" method="get" class="">
+                                                            <input type="hidden" name="q" value="${data.id}">
+                                                            <button type="submit" class="add-question d-flex align-items-center">
+                                                            إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
+                                                            </button>
+                                                        </form>
+                                                    </div>` + lastQuizsHtml.innerHTML;
+
+                    }).catch(error => {
+                        // Handle any errors
+                        console.error('Error:', error);
+                        // Show error message using iziToast
+                        iziToast.error({
+                            title: 'الشبكة غير مستقره ',
                             position: 'topRight'
                         });
-                    }
-                    // Convert the response to JSON
-                    return response.json();
-                })
-                .then(data => console.log(data)) // Log the response data
-                .catch(error => {
-                    // Handle any errors
-                    console.error('Error:', error);
-                    // Show error message using iziToast
-                    iziToast.error({
-                        title: 'الشبكة غير مستقره ',
-                        position: 'topRight'
                     });
-                });
+            }
         });
 
-
+        // Initial load of the last three quizzes
+        displayLastThreeQuizzes();
 
 
     </script>
