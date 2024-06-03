@@ -178,17 +178,25 @@
                         <div class="main-add-quiz">
                             <p class="title">تعليمات الإختبار</p>
 
-                            <form action="" class="createQuiz">
+                            <form action="" onsubmit="return validateForm_1()" class="createQuiz">
                                 <div class="row">
 
                                     <div class="col-xl-6 col-lg-6 col-sm-6 col-12">
-
+                                    
                                         <!-- اسم الاختبار -->
                                         <div class="mb-3">
                                             <label for="name-quiz" class="label-input mb-2">اسم الإختبار</label>
-                                            <input type="text" name="description" id="name-quiz"
+                                            <input type="text" maxlength="15"    name="description" id="name-quiz"
                                                 class="text-input w-100">
+                                                <span class="error-message" id="errorMessage"></span>
+                                                <style>
+                                                    .error-message {
+                                                        color: red;
+                                                    }
+                                                </style>
+                                                
                                             </input>
+
                                         </div>
 
                                         <!-- مدة الإختبار -->
@@ -260,7 +268,19 @@
                         </div>
 
                         <!-- footer add quiz -->
-                        <div class="lastQuizs">
+                        <div class="footer-add-quiz d-flex align-items-center justify-content-between">
+
+                            <div class="d-flex align-items-center">
+                                <p class="name-quiz">ميد تيرم عربي</p>
+
+                                <p class="status-quiz active">نشط</p>
+                            </div>
+
+                            <form action="add-question.html" class="">
+                                <button type="submit" class="add-question d-flex align-items-center">
+                                    إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
+                                </button>
+                            </form>
 
                         </div>
                     </div>
@@ -279,7 +299,7 @@
     <!-- api requset -->
     <script>
 
-        // Request Get Subject
+        // Request Get Subject 
         let requestGetSubjects = new XMLHttpRequest();
         requestGetSubjects.open("GET", "http://edu1.runasp.net/api/subject");
         requestGetSubjects.responseType = "json";
@@ -376,60 +396,7 @@
                 });
         });
 
-        // Request Get Subject
-        let requestGetQuizs = new XMLHttpRequest();
-        requestGetQuizs.open("GET", "http://edu1.runasp.net/api/quiz");
-        requestGetQuizs.responseType = "json";
-        requestGetQuizs.send();
-        requestGetQuizs.onload = function () {
 
-            // if request is success ☻
-            if (requestGetQuizs.status >= 200 && requestGetQuizs.status <= 300) {
-                let quizs = requestGetQuizs.response;
-
-                // Get the last 3 quizzes
-                let lastThreeQuizes = quizs.slice(-3);
-
-                for (quiz of lastThreeQuizes) {
-                    lastQuizsHtml = document.querySelector(".lastQuizs");
-                    lastQuizsHtml.innerHTML += `<div class="footer-add-quiz border-bottom  d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                    <p class="name-quiz">${quiz.description}</p> <!-- Assuming quiz has a 'description' property -->
-                </div>
-                <form action="add-question.html" method="get" class="">
-                    <input type="hidden" name="q" value="${quiz.id}">
-                    <button type="submit" class="add-question d-flex align-items-center">
-                    إضافة اسئلة <div><i class="fa-solid fa-plus mb-0"></i></div>
-                    </button>
-                </form>
-            </div>`;
-
-                }
-            }
-            // if request is wrong 
-            else {
-                iziToast.error({
-                    title: 'خطأ في النظام !',
-                    zindex: 999,
-                    overlay: true,
-                    progressBar: false,
-                    timeout: false,
-                    position: 'topCenter',
-                    buttons: [
-                        ['<button>Refresh</button>', function (instance, toast) {
-                            instance.hide({
-                                transitionOut: 'fadeOutUp',
-                                onClosing: function (instance, toast, closedBy) {
-                                    console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
-                                    window.location.reload(); // Reload the page
-                                }
-                            }, toast, 'buttonName');
-                        }]
-                    ],
-                });
-            }
-
-        }
 
 
     </script>
