@@ -1,3 +1,107 @@
+// async function includeHTML() {
+//     const elements = document.querySelectorAll('[data-include]');
+//     elements.forEach(async (el) => {
+//         const file = el.getAttribute('data-include');
+//         try {
+//             const response = await fetch(file);
+//             if (response.ok) {
+//                 const text = await response.text();
+//                 el.innerHTML = text;
+//             } else {
+//                 el.innerHTML = "Content not found.";
+//             }
+//         } catch (error) {
+//             el.innerHTML = "Failed to load content.";
+//             console.error('Error fetching the file:', error);
+//         }
+//     });
+// }
+
+// document.addEventListener('DOMContentLoaded', includeHTML);
+
+// Encapsulate the slider functionality in a function
+function initializeSlider() {
+    let slider = document.querySelector('.slider .list');
+    let items = document.querySelectorAll('.slider .list .item');
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    let dots = document.querySelectorAll('.slider .dots li');
+
+    let lengthItems = items.length - 1;
+    let active = 0;
+
+    next.onclick = function () {
+        active = active + 1 <= lengthItems ? active + 1 : 0;
+        reloadSlider();
+    }
+
+    prev.onclick = function () {
+        active = active - 1 >= 0 ? active - 1 : lengthItems;
+        reloadSlider();
+    }
+
+    let refreshInterval = setInterval(() => { next.click() }, 3000);
+
+    function reloadSlider() {
+        slider.style.left = -items[active].offsetLeft + 'px';
+
+        let last_active_dot = document.querySelector('.slider .dots li.active');
+        if (last_active_dot) {
+            last_active_dot.classList.remove('active');
+        }
+
+        dots[active].classList.add('active');
+
+        clearInterval(refreshInterval);
+        refreshInterval = setInterval(() => { next.click() }, 3000);
+    }
+
+    dots.forEach((li, key) => {
+        li.addEventListener('click', () => {
+            active = key;
+            reloadSlider();
+        })
+    });
+
+    window.onresize = function (event) {
+        reloadSlider();
+    };
+}
+
+// Call the initializeSlider function only when needed
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.slider .list')) {
+        initializeSlider();
+    }
+});
+
+// end slider login
+
+// start show password 
+
+const passwordIcon = document.querySelectorAll('.password__icon');
+const authPassword = document.querySelectorAll('.auth__password');
+
+for (let i = 0; i < passwordIcon.length; ++i) {
+    passwordIcon[i].addEventListener('click', (event) => {
+        const inputField = event.currentTarget.parentElement.querySelector('input');
+        if (event.target.classList.contains('fa-eye-slash')) {
+            event.target.classList.remove('fa-eye-slash');
+            event.target.classList.add('fa-eye');
+            inputField.type = 'text';
+        } else {
+            event.target.classList.add('fa-eye-slash');
+            event.target.classList.remove('fa-eye');
+            inputField.type = 'password';
+        }
+    });
+}
+
+
+// end show password 
+
+// =================================
+
 function validateForm_1() {
     var quizName = document.getElementById("name-quiz").value.trim();
     var errorMessage = document.getElementById("errorMessage");
@@ -146,4 +250,37 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+});
+
+// ===========================
+
+// function formatDate(isoDateString) {
+//     // Parse the ISO 8601 date string into a Date object
+//     const date = new Date(isoDateString);
+
+//     // Extract the day, month, and year
+//     const day = String(date.getDate()).padStart(2, '0');
+//     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+//     const year = date.getFullYear();
+
+//     // Format the extracted values into the desired format
+//     return `${day} | ${month} | ${year}`;
+// }
+
+// ===================================
+
+// dispaly teacher data  
+document.addEventListener('DOMContentLoaded', function () {
+    var teacherData = sessionStorage.getItem('teacher');
+    if (teacherData) {
+        var teacher = JSON.parse(teacherData);
+
+        // name in navbar
+        var teacherNameElements = document.querySelectorAll('.teacherName');
+        teacherNameElements.forEach(function (element) {
+            element.textContent = teacher.firstName + " " + teacher.lastName; // Concatenate additional text
+        });
+
+        // name in inex page 
+    }
 });

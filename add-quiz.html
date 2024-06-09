@@ -25,6 +25,7 @@
     <!-- include link Alerts "iziToast" -->
     <link rel="stylesheet" href="assets/css/iziToast.min.css">
     <link rel="stylesheet" href="assets/css/btn.css">
+
 </head>
 
 <body>
@@ -283,50 +284,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/iziToast.min.js"></script>
+    <script src="assets/js/requests api/subject/getTeacherSubjectsRequest.js"></script>
 
     <!-- api requset -->
     <script>
-
-        // Request Get Subject 
-        let requestGetSubjects = new XMLHttpRequest();
-        requestGetSubjects.open("GET", "http://edu1.runasp.net/api/subject");
-        requestGetSubjects.responseType = "json";
-        requestGetSubjects.send();
-        requestGetSubjects.onload = function () {
-
-            // if request is success ☻
-            if (requestGetSubjects.status >= 200 && requestGetSubjects.status <= 300) {
-                let subjects = requestGetSubjects.response;
-                for (subject of subjects) {
-                    document.getElementById("select-subjects").innerHTML += `<option value="${subject.subjectId}"> ${subject.subjName} </option>`
-                }
-            }
-            // if request is wrong 
-            else {
-                iziToast.error({
-                    title: 'System Error',
-                    zindex: 999,
-                    overlay: true,
-                    progressBar: false,
-                    timeout: false,
-                    position: 'topCenter',
-                    message: 'you have try refresh page or Get back to us in a few minutes ',
-                    buttons: [
-                        ['<button>Refresh</button>', function (instance, toast) {
-                            instance.hide({
-                                transitionOut: 'fadeOutUp',
-                                onClosing: function (instance, toast, closedBy) {
-                                    console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
-                                    window.location.reload(); // Reload the page
-                                }
-                            }, toast, 'buttonName');
-                        }]
-                    ],
-                });
-            }
-
-        }
-
 
         // Function to display the last three quizzes
         function displayLastThreeQuizzes() {
@@ -339,6 +300,8 @@
                 if (requestGetQuizs.status >= 200 && requestGetQuizs.status <= 300) {
                     let quizs = requestGetQuizs.response;
 
+                    // console.log(localStorage.subjects)
+
                     // Get the last 3 quizzes
                     let lastThreeQuizes = quizs.slice(-3);
                     let lastQuizsHtml = document.querySelector(".lastQuizs");
@@ -347,7 +310,7 @@
                     for (let quiz of lastThreeQuizes) {
                         lastQuizsHtml.innerHTML += `<div class="footer-add-quiz border-bottom  d-flex align-items-center justify-content-between">
                                                         <div class="d-flex align-items-center">
-                                                            <p class="name-quiz">${quiz.description}</p> <!-- Assuming quiz has a 'description' property -->
+                                                            <p class="name-quiz">${quiz.description}</p>
                                                         </div>
                                                         <form action="add-question.html" method="get" class="">
                                                             <input type="hidden" name="q" value="${quiz.id}">
