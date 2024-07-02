@@ -1,3 +1,13 @@
+import './logout.js';
+import { openSessionTeacher } from './loginRequest.js';
+
+var token = localStorage.getItem('teacherToken');
+var teacherId = localStorage.getItem('teacherId');
+var expiration = localStorage.getItem('teacherTokenExpiration');
+
+if (token || expiration) {
+    openSessionTeacher(teacherId, () => ({}));
+}
 
 function dateNow() {
     // Get the current date
@@ -25,9 +35,15 @@ function isAuthenticated() {
 
     const now = dateNow();
     if (now > expiration) {
-        logoutUser();
+        logout();
         return false;
     }
+
+    // const teacherSession = sessionStorage.getItem('teacher');
+    // if (!teacherSession){
+    //     logout();
+    //     return false;
+    // }
 
     return true;
 }
@@ -35,8 +51,9 @@ function isAuthenticated() {
 const isLoggedIn = isAuthenticated();
 const currentPath = window.location.pathname;
 
-if (!isLoggedIn && currentPath !== '/auth/login.html') {
-    window.location.href = 'auth/login.html';
-} else if (isLoggedIn && currentPath === '/auth/login.html') {
-    window.location.href = '/index.html';  // Redirect to the home page or any other page
+
+if (!isLoggedIn && currentPath !== '/view/auth/login.html') {
+    window.location.href = '/view/auth/login.html';
+} else if (isLoggedIn && currentPath === '/view/auth/login.html') {
+    window.location.href = '/view/mian/index.html';  // Redirect to the home page or any other page
 }

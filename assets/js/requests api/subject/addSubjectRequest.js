@@ -1,9 +1,10 @@
+// Request Post Subject "create new subject"
+
 // Get the ID Teacher from local storage
 const teacherId = localStorage.getItem('teacherId');
 document.querySelector(".teacherSubjectInput").value = teacherId;
 
 
-// Request Post Subject "create new subject"
 const formCreateSubject = document.querySelector('.createSubject');
 
 formCreateSubject.addEventListener('submit', event => {
@@ -12,14 +13,15 @@ formCreateSubject.addEventListener('submit', event => {
 
         // Collect the form data
         const objectSubjectData = new FormData(formCreateSubject);
-
+        
         // Convert the FormData object to a plain JavaScript object
         const subjectData = Object.fromEntries(objectSubjectData);
+        subjectData.isOnilne = subjectData.isOnilne == 'true' ? true : false ;
+        subjectData.isActive = subjectData.isActive == 'true' ? true : false ;
+        subjectData.totalPrice = subjectData.totalPrice == "" ? 0 : subjectData.totalPrice; 
 
         // Convert the JavaScript object to a JSON string
         const subjectDataJson = JSON.stringify(subjectData);
-
-        console.log(subjectDataJson);
 
         // Send the JSON data to the server using fetch
         fetch('http://edu1.runasp.net/api/subject', {

@@ -1,7 +1,7 @@
-function deleteSubject(subjectId) {
-    const confirmDelete = confirm('هل انت متاكد من حذف المادة ؟');
+function deleteQuestion(questionId) {
+    const confirmDelete = confirm('هل أنت متأكد أنك تريد حذف هذا السؤال ؟');
     if (confirmDelete) {
-        fetch(`http://edu1.runasp.net/api/subject/${subjectId}`, {
+        fetch(`http://edu1.runasp.net/api/questions/${questionId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -9,7 +9,7 @@ function deleteSubject(subjectId) {
         })
         .then(response => {
             if (response.ok) {
-                localStorage.setItem('successDeleteSubject', 'تم حذف المادة بنجاح');
+                localStorage.setItem('successDeleteQuestion', 'تم حذف السؤال بنجاح');
                 // Reload the page after successful deletion
                 window.location.reload();
             } else {

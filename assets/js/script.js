@@ -1,23 +1,22 @@
-// async function includeHTML() {
-//     const elements = document.querySelectorAll('[data-include]');
-//     elements.forEach(async (el) => {
-//         const file = el.getAttribute('data-include');
-//         try {
-//             const response = await fetch(file);
-//             if (response.ok) {
-//                 const text = await response.text();
-//                 el.innerHTML = text;
-//             } else {
-//                 el.innerHTML = "Content not found.";
-//             }
-//         } catch (error) {
-//             el.innerHTML = "Failed to load content.";
-//             console.error('Error fetching the file:', error);
-//         }
-//     });
-// }
+function includeHTML() {
+    const elements = document.querySelectorAll('[data-include]');
+    elements.forEach(element => {
+        const file = element.getAttribute('data-include');
+        fetch(file)
+            .then(response => response.text())
+            .then(data => {
+                element.innerHTML = data;
+                element.removeAttribute('data-include');
+                includeHTML(); // Re-run for nested includes if any
+            })
+            .catch(error => console.error('Error loading file:', error));
+    });
+}
 
-// document.addEventListener('DOMContentLoaded', includeHTML);
+// Run the function on page load
+document.addEventListener('DOMContentLoaded', includeHTML);
+
+// =====================================
 
 // Encapsulate the slider functionality in a function
 function initializeSlider() {
@@ -254,18 +253,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ===========================
 
-// function formatDate(isoDateString) {
-//     // Parse the ISO 8601 date string into a Date object
-//     const date = new Date(isoDateString);
+function formatDate(isDateString) {
+    // Parse the ISO 8601 date string into a Date object
+    const date = new Date(isDateString);
 
-//     // Extract the day, month, and year
-//     const day = String(date.getDate()).padStart(2, '0');
-//     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-//     const year = date.getFullYear();
+    // Extract the day, month, and year
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = date.getFullYear();
 
-//     // Format the extracted values into the desired format
-//     return `${day} | ${month} | ${year}`;
-// }
+    // Format the extracted values into the desired format
+    return `${day} | ${month} | ${year}`;
+}
 
 // ===================================
 
@@ -281,6 +280,9 @@ document.addEventListener('DOMContentLoaded', function () {
             element.textContent = teacher.firstName + " " + teacher.lastName; // Concatenate additional text
         });
 
-        // name in inex page 
+        var profileImg = document.querySelector('#profile-image');
+
+        profileImg.src = teacher.profileImageUrl == null ? '../../assets/imgs/default.jpg' : teacher.profileImageUrl;
+
     }
 });

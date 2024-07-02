@@ -6,7 +6,7 @@ class Validation {
 
     // Method to check if input value is empty
     required() {
-        return this.value.trim() === '' ? `هذا الحقل مطلوب` : '';
+        return this.value.trim() === '' ? `${this.name} مطلوب` : false;
     }
 
     // Method to check if input is arabic
@@ -14,9 +14,17 @@ class Validation {
         // Regular expression to match Arabic characters
         var arabicRegex = /[\u0600-\u06FF\u0750-\u077F]/;
         if (!arabicRegex.test(this.value)) {
-            return "يجب ادخال هذا الحقل باللغه العربية";
+            return `يجب ادخال ${this.name} باللغه العربية`;
         }
-        return ""; // No error message if validation passes
+        return false;
+    }
+
+    noSpecialCharacters() {
+        const specialCharRegex = /[^a-zA-Z0-9\u0600-\u06FF\s]/;
+        if (specialCharRegex.test(this.value)) {
+            return `لا يجب ان يحتوي ${this.name} على أحرف خاصة`;
+        }
+        return false;
     }
 
     // Method to check input value with specific pattern

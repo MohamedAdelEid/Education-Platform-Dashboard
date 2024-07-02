@@ -37,7 +37,7 @@ body {
     margin: 0;
 }
 
-.error{
+.error {
     font-size: 13px;
     color: red;
 }
@@ -245,9 +245,10 @@ main {
 /* end sub menu */
 
 .avatar {
-    height: 40px;
-    width: 40px;
+    height: 47px;
+    width: 47px;
     object-fit: cover;
+    border-radius: 100%;
 }
 
 .navbar {
@@ -650,7 +651,7 @@ main {
     border-radius: 5px;
     font-size: 18px;
     transition: .2s;
-
+    text-decoration: none;
 }
 
 .primary-btn:hover {
@@ -785,7 +786,7 @@ main {
 }
 
 .subject {
-    min-height: 180px;
+    min-height: 230px;
 }
 
 .subject .subject-child {
@@ -1193,6 +1194,120 @@ main {
 
 /* end style add question  */
 
+/* start style myprofile */
+
+.user-profile .info {
+    background-color: var(--white);
+    border-radius: .5rem;
+    padding: 2rem;
+}
+
+.user-profile .info .user {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-bottom: 2px solid #8b8b8b57;
+}
+
+.user-profile .info .user .image-profile {
+    position: relative;
+    margin-right: 20px;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+}
+
+.user-profile .info .user .image-profile img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.user-profile .info .user .image-profile i {
+    position: absolute;
+    font-size: 15px;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: .2s;
+}
+
+.user-profile .info .user .image-profile img:hover+i {
+    opacity: 1;
+}
+
+.user-profile .info .user h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
+.user-profile .info .user p {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    padding-bottom: .3rem;
+}
+
+.user-profile .profile-details {
+    padding: 1rem;
+}
+
+.user-profile .profile-details .title-information {
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.user-profile .profile-details .information {
+    margin-top: 3px;
+    padding: .8rem;
+    border: 1px solid var(--light-color);
+    border-radius: 5px;
+    color: var(--light-color);
+}
+
+.user-profile .profile-details .information i {
+    font-size: 2.5rem;
+}
+
+.user-profile .profile-details .information p {
+    font-size: 1.5rem;
+}
+
+.user-profile .edit-border {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.user-profile .edit-border div:first-child {
+    width: 5%;
+    height: 1px;
+    background-color: var(--black);
+}
+
+.user-profile .edit-border div:nth-child(2) {
+    color: var(--main-color);
+    font-size: 1.6rem;
+    margin: 0 8px;
+}
+
+.user-profile .edit-border div:last-child {
+    width: 60%;
+    height: 1px;
+    background-color: var(--black);
+}
+
+
+
+/* end style myprofile */
 
 @media (min-width:768px) {
     .label-text {
